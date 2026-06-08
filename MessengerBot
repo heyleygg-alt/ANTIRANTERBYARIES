@@ -1,0 +1,12 @@
+import { createMessengerBot } from "@dongdev/fca-unofficial";
+
+const bot = await createMessengerBot(
+  { appState: require("./appstate.json") },
+  {
+    listenEvents: true,
+    stopOnSignals: true,
+    commandPrefix: "/",
+    maxEventListeners: 64,
+    enableComposer: true
+  }
+);
