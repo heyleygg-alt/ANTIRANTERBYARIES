@@ -1,0 +1,4 @@
+await bot.launch({ stopOnSignals: true });
+
+// Graceful shutdown
+await bot.stop();
