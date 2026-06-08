@@ -1,0 +1,3 @@
+api.sendMessage("Hello!", threadID);
+api.getThreadInfo(threadID, (err, info) => { ... });
+api.setMessageReaction(":heart:", messageID);
