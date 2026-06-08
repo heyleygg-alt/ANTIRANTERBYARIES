@@ -1,0 +1,15 @@
+const { login } = require("@dongdev/fca-unofficial");
+
+async function main() {
+  const ctx = await login({ appState: require("./appstate.json") });
+  const api = ctx.api;
+
+  api.listenMqtt((err, event) => {
+    if (err) return console.error(err);
+    if (event.type === "message") {
+      api.sendMessage(`Echo: ${event.body}`, event.threadID);
+    }
+  });
+}
+
+main();
