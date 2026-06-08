@@ -1,0 +1,24 @@
+// Global middleware
+bot.use(async (ctx, next) => {
+  console.log(`[${ctx.threadID}] ${ctx.text}`);
+  await next();
+});
+
+// Command handler — matches "/ping" at the start of a message
+bot.command("ping", async (ctx) => {
+  await ctx.replyAsync("pong");
+});
+
+// Pattern matching — regex or substring
+bot.hears(/hello/i, async (ctx) => {
+  await ctx.replyAsync("Hi there!");
+});
+
+bot.hears("goodbye", async (ctx) => {
+  ctx.reply("See you later!");
+});
+
+// Error handler for the composer chain
+bot.catch((err, ctx) => {
+  console.error("Composer error:", err);
+});
