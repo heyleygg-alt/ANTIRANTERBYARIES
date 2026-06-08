@@ -1,0 +1,7 @@
+import { createFcaClient } from "@dongdev/fca-unofficial";
+
+const client = createFcaClient(ctx.api);
+
+await client.messages.send("Hello!", threadID);
+await client.threads.getInfo(threadID);
+await client.users.getInfo(userID);
