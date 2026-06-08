@@ -1,0 +1,26 @@
+const { createMessengerBot } = require("@dongdev/fca-unofficial");
+
+async function main() {
+  const bot = await createMessengerBot(
+    { appState: require("./appstate.json") },
+    {
+      listenEvents: true,
+      stopOnSignals: true,
+      commandPrefix: "/"
+    }
+  );
+
+  bot.on("error", (err) => console.error("Bot error:", err));
+
+  bot.on("messageCreate", (event) => {
+    if (event.body) {
+      console.log(`[${event.threadID}] ${event.body}`);
+    }
+  });
+
+  bot.command("ping", async (ctx) => {
+    await ctx.replyAsync("pong");
+  });
+}
+
+main();
